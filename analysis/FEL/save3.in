@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# 脚本功能：处理.xvg文件，将第一列数据替换为行号
+# 适用于Linux环境，使用awk工具实现
+
+# 检查参数
+if [ $# -ne 2 ]; then
+    echo "用法: $0 <输入文件.xvg> <输出文件>"
+    echo "示例: $0 data.xvg processed_data.txt"
+    exit 1
+fi
+
+input_file=$1
+output_file=$2
+
+# 检查输入文件是否存在
+if [ ! -f "$input_file" ]; then
+    echo "错误: 输入文件 '$input_file' 不存在"
+    exit 1
+fi
+
+# 检查文件扩展名
+if [[ "$input_file" != *.xvg ]]; then
+    echo "警告: 输入文件可能不是.xvg格式"
+fi
+
+# 处理.xvg文件
+# 1. 跳过以#或@开头的注释行
+# 2. 将第一列替换为行号
+# 3. 保留第二列数据不变
+awk '
+    BEGIN { line_number = 1 }
+    /^[^#@]/ { 
+        printf "%d\t%s\n", line_number, $2
+        line_number++
+    }
+' "$input_file" > "$output_file"
+
+echo "处理完成: $input_file -> $output_file"
+echo "第一列已替换为行号，第二列数据保持不变"
+

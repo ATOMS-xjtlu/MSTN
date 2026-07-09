@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# 检查参数是否正确
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <rg.xvg> <output_file>"
+    echo "Example: $0 data.txt cleaned_data.txt"
+    exit 1
+fi
+
+input_file="$1"
+output_file="$2"
+
+# 检查输入文件是否存在
+if [ ! -f "$input_file" ]; then
+    echo "Error: Input file '$input_file' not found!"
+    exit 1
+fi
+
+# 核心处理逻辑
+awk '
+{
+    output_line = ""
+    field_count = 0
+    in_field = 0
+    prev_char = ""
+    
+    # 逐字符处理
+    for (i = 1; i <= length; i++) {
+        char = substr($0, i, 1)
+        
+        # 空格处理逻辑
+        if (char == " ") {
+            if (in_field == 1) {
+                in_field = 0
+                field_count++
+            }
+            output_line = output_line char
+        }
+        # 非空格处理逻辑
+        else {
+            # 遇到值开始
+            if (in_field == 0 && prev_char == " ") {
+                if (field_count >= 2) break
+                in_field = 1
+            }
+            output_line = output_line char
+        }
+        
+        prev_char = char
+    }
+    
+    print output_line
+}' "$input_file" > "$output_file"
+
+echo "Success! Processed $(wc -l < "$input_file") lines."
+echo "Output saved to: $output_file"
+

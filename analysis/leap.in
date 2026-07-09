@@ -1,0 +1,40 @@
+source leaprc.protein.ff14SB #蛋白质力场
+# source leaprc.gaff #小分子力场
+source leaprc.water.tip3p #水和离子力场
+loadamberparams frcmod.ionsff99_tip3p #离子力场，实际上可以不调用该力场，仅做保险使用
+
+# loadamberprep ligand.prepi #导入小分子文件
+# loadamberparams ligand.frcmod #小分子力场
+# complex-amber= loadpdb M.pdb #蛋白质结构，经过pdb4amber
+
+
+
+complex-amber = loadpdb M.pdb #蛋白质结构，经过pdb4amber
+bond complex-amber.6.SG complex-amber.16.SG 
+bond complex-amber.15.SG complex-amber.74.SG 
+bond complex-amber.43.SG complex-amber.106.SG 
+bond complex-amber.47.SG complex-amber.108.SG 
+bond complex-amber.73.SG complex-amber.182.SG 
+bond complex-amber.115.SG complex-amber.125.SG 
+bond complex-amber.124.SG complex-amber.183.SG 
+bond complex-amber.152.SG complex-amber.215.SG 
+# complex-amber = combine {pro1 pro2 pro3 pro4} #组合
+
+saveAmberParm complex-amber complex-dry.top complex-dry.crd #保存没有加水和离子的top和crd文件
+
+solvateBox complex-amber TIP3PBOX 12 #加盒子、加水
+addions complex-amber Na+ 0 #加抗衡离子
+addions complex-amber Cl- 0 #加抗衡离子，一般只需要其中某一个，都写上仅为保险使用
+
+saveAmberParm complex-amber complex-amber.top complex-amber.crd #保存完整的体系top和crd文件
+savepdb complex-amber complex-amber.pdb #保存体系结构
+
+#saveAmberParm pro pro.top pro.crd #保存蛋白质的top和crd文件
+#savepdb pro pro.pdb #保存蛋白质结构，一般没什么用
+#saveAmberParm lig lig.top lig.crd #保存配体的top和crd文件
+#savepdb lig lig.pdb #保存配体结构
+
+desc complex-amber.73.SG
+
+quit
+

@@ -1,0 +1,30 @@
+parm complex-amber.top #调用top文件
+trajin md-1us.trj #调用轨迹文件
+
+autoimage # 去除pbc（周期边界条件，盒子）
+center :1-217 mass
+
+rms first @CA # alpha C原子 fit到最初的结构上，计算RMSD
+atomicfluct first @CA
+
+#strip :WAT|(:Na+|:Cl-) # 去除水，离子
+# trajout md-1us.xtj  # 输出.xtj轨迹文件
+trajout md-1us.xtc  #输出轨迹为xtc文件
+
+#trajout md-initial.pdb onlyframes 1-1  # 输出第一帧结构
+# trajout md-1-2000-fix.pdb onlyframes 1-2000 # 输出1-2000帧结构
+# trajout md-10-fix.pdb onlyframes 10-10 # 输出10帧结构
+# trajout md-12480-fix.pdb onlyframes 12480-12480
+# trajout md-12490-fix.pdb onlyframes 12490-12490
+# trajout md-12500-fix.pdb onlyframes 12500-12500
+trajout md-25000-fix.pdb onlyframes 25000-25000
+# rms rms-pro mass :1-217@CA out rmsd-protein.dat # 在1-218氨基酸上输出RMSD
+# rms rms-lig :219&!@H= out rmsd-lig.dat # 配体中重原子RMSD
+# atomicfluct out rmsf-protein.dat :1-217@CA byres # RMSF
+# atomicfluct out rmsf-lig.dat lig :219&!@H= byres
+
+# surf :1-218 out surf.out # 计算蛋白（残基1-218）的溶剂可及表面，注意需选中蛋白全部残基
+
+# surf :24-32,82-101,110-127,159-172 out surf-re.out solutemask :1-218 #计算蛋白（残基1-218）中24-32号残基的溶剂可及表面
+
+run                                                        

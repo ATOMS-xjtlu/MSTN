@@ -1,0 +1,20 @@
+parm md-initial.pdb #调用top文件
+trajin md-nW.xtc #调用轨迹文件
+
+autoimage # 去除pbc（周期边界条件，盒子）
+center :1-217 mass
+strip :WAT|(:Na+|:Cl-) # 去除水，离子
+
+#distance dist @1334 @3015 out F87dist.dat noimage
+
+distance dist1-1 @1963 @1006 out distance2.dat noimage #1963-L20-L129-L286,1006-A55-A330
+
+distance dist1-2 @1559 @883 out distance1.dat noimage #1559-M101-367;883-P322
+
+#distance dist2-1 @776 @956 out beta1-dist.dat noimage
+
+#distance dist2-2 @2456 @2636 out beta2-dist.dat noimage
+
+# 73C 181C SG 1122
+angle ang @1334 @1122 @3015 out angle.dat
+run                                                        

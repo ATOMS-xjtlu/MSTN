@@ -1,0 +1,20 @@
+parm complex-amber.top #调用top文件
+trajin md2.trj #调用轨迹文件
+
+autoimage # 去除pbc（周期边界条件，盒子）
+
+
+strip :WAT|(:Na+|:Cl-) # 去除水，离子
+
+#strip :219-219
+
+center :1-217 mass
+rms first @CA # alpha C原子 fit到最初的结构上，计算RMSD
+rms rms-pro mass :1-217@CA out rmsd-protein.dat # 在1-218氨基酸上输出RMSD
+# rms rms-lig :219&!@H= out rmsd-lig.dat # 配体中重原子RMSD
+atomicfluct out rmsf-protein.dat :1-218@CA byres # RMSF
+#atomicfluct out rmsf-lig.dat lig :219&!@H= byres
+
+
+
+run                                                        

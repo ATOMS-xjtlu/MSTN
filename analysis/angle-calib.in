@@ -1,0 +1,14 @@
+parm md-initial.pdb #调用top文件
+trajin 2us-extract.xtc #调用轨迹文件
+#trajin md-2us.xtc
+autoimage # 去除pbc（周期边界条件，盒子）
+center :1-217 mass
+strip :WAT|(:Na+|:Cl-) # 去除水，离子
+
+#distance dist @1334 @3015 out F87dist.dat 
+#distance dist @1334 @3015 out K8dist.dat 
+#noimage
+
+# 73C 181C SG 1122
+angle ang @1374 @1122 @3054 out angle.dat
+run                                                        

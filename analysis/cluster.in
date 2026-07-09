@@ -1,0 +1,8 @@
+parm md-initial.pdb #调用top文件
+trajin md-nW1000.xtc #调用轨迹文件
+#cluster dbscan minpoints 25 epsilon 1.5 sievetoframe rms :1-218@CA sieve 15 out combined.cnumvtime.dat info combined.info.dat summarysplit split.dat splitframe 5000 # 分割帧数
+trajout md-1926-fix.pdb onlyframes 1926-1926
+trajout md-9404-fix.pdb onlyframes 9404-9404
+
+
+run                                                        

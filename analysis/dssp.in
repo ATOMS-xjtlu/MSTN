@@ -1,0 +1,14 @@
+parm md-initial.pdb #调用top文件
+trajin md-nW1us.xtc #调用轨迹文件
+
+autoimage # 去除pbc（周期边界条件，盒子）
+center :1-217 mass
+strip :WAT|(:Na+|:Cl-) # 去除水，离子
+ 
+
+image origin center familiar
+reference complex-amber.crd         #导入坐标参考文件
+secstruct :50-65 out dssp50-65.gnu    
+secstruct :159-174 out dssp159-174.gnu   #计算50-65,159-174残基的dssp VFLQKYPHTHLVHQAN
+
+run                                                        
