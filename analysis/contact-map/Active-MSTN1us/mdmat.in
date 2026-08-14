@@ -1,0 +1,8 @@
+
+gmx mdmat -s md.tpr -n md.ndx -f md-1us.xtc -mean mean.xpm -frames frame.xpm -b 1 -e 20000 -xvg xmgrace -nlevels 100
+#gmx mdmat -s md.tpr -n md.ndx -f md-1us.xtc -no -b 1 -e 20000 -xvg xmgrace -nlevels 100
+
+#secstruct :50-65 out dssp50-65.gnu    
+#secstruct :159-174 out dssp159-174.gnu   #计算50-65,159-174残基的dssp VFLQKYPHTHLVHQAN
+
+#run                                                        
