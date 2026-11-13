@@ -1,0 +1,19 @@
+parm complex-amber.top
+trajin md2.trj
+
+autoimage
+
+
+strip :WAT|(:Na+|:Cl-)
+
+#strip :219-219
+
+center :1-217 mass
+rms first @CA
+rms rms-pro mass :1-217@CA out rmsd-protein.dat
+atomicfluct out rmsf-protein.dat :1-218@CA byres # RMSF
+#atomicfluct out rmsf-lig.dat lig :219&!@H= byres
+
+
+
+run                                                        

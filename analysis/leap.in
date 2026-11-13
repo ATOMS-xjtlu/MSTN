@@ -1,0 +1,31 @@
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+loadamberparams frcmod.ionsff99_tip3p
+
+
+
+
+complex-amber = loadpdb M.pdb
+bond complex-amber.6.SG complex-amber.16.SG 
+bond complex-amber.15.SG complex-amber.74.SG 
+bond complex-amber.43.SG complex-amber.106.SG 
+bond complex-amber.47.SG complex-amber.108.SG 
+bond complex-amber.73.SG complex-amber.182.SG 
+bond complex-amber.115.SG complex-amber.125.SG 
+bond complex-amber.124.SG complex-amber.183.SG 
+bond complex-amber.152.SG complex-amber.215.SG 
+
+saveAmberParm complex-amber complex-dry.top complex-dry.crd
+
+solvateBox complex-amber TIP3PBOX 12
+addions complex-amber Na+ 0
+addions complex-amber Cl- 0
+
+saveAmberParm complex-amber complex-amber.top complex-amber.crd
+savepdb complex-amber complex-amber.pdb
+
+
+desc complex-amber.73.SG
+
+quit
+

@@ -1,0 +1,7 @@
+parm md-initial.pdb 
+trajin md-nW1000.xtc 
+trajout md-1926-fix.pdb onlyframes 1926-1926
+trajout md-9404-fix.pdb onlyframes 9404-9404
+
+
+run                                                        

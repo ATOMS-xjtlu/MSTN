@@ -1,0 +1,14 @@
+parm md-initial.pdb
+trajin 2us-extract.xtc
+#trajin md-2us.xtc
+autoimage
+center :1-217 mass
+strip :WAT|(:Na+|:Cl-)
+
+#distance dist @1334 @3015 out F87dist.dat 
+#distance dist @1334 @3015 out K8dist.dat 
+#noimage
+
+# 73C 181C SG 1122
+angle ang @1374 @1122 @3054 out angle.dat
+run                                                        

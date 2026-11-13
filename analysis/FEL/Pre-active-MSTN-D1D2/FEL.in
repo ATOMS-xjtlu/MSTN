@@ -1,0 +1,21 @@
+#gmx rms -s md-initial.pdb -f md-nW1000.xtc -o rmsd.xvg
+
+#gmx distance -s md-initial.pdb -f md-nW1000.xtc -select "resid 51 and name CA plus resid 61 and name CA" -oall B1-distance.xvg -pbc
+
+#gmx gyrate -s md-initial.pdb -f md-nW1000.xtc -o rg.xvg
+
+#./save2.in B1-distance.xvg B1.xvg
+#./save2.in rg.xvg rg0.xvg
+#./save1.sh rg0.xvg rg2.xvg
+
+#paste B1.xvg rg2.xvg> B1-rg.xvg
+#paste B1.xvg angle2.xvg> B1-an.xvg
+
+gmx sham -f 129-210.xvg -nlevels 100 -ls gibbs.xpm
+
+bash xpm2all.bsh gibbs.xpm -xyz
+
+
+plot "gibbs~.xyz" u 1:2:3 w image t''
+
+

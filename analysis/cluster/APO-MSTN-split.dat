@@ -1,0 +1,5 @@
+# 1st <= 5000 < 2nd
+# 1st= 5000  2nd= 5000
+#Cluster    Total     Frac C#      Color NumIn1st NumIn2nd    Frac1    Frac2   First1   First2     Rep1     Rep2
+0            1031   0.1031  1      black     1031        0   0.2062   0.0000     1258       -1     1926       -1
+1             534   0.0534  2        red        0      534   0.0000   0.1068       -1     3858       -1     9404

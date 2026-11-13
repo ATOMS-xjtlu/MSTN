@@ -1,0 +1,19 @@
+
+
+./save2.in distance-1.xvg D1.xvg
+./save2.in angle.xvg A.xvg
+./save1.sh A.xvg A0.xvg
+./save2.in distance-2.xvg D-02.xvg
+./save1.sh D-02.xvg D2.xvg
+
+paste D1.xvg rA0.xvg> D1-A.xvg
+paste D1.xvg D2.xvg> D1-D2.xvg
+
+gmx sham -f D1-D2.xvg -nlevels 100 -ls gibbs.xpm
+
+bash xpm2all.bsh gibbs.xpm -xyz
+
+
+plot "gibbs~.xyz" u 1:2:3 w image t''
+
+

@@ -1,0 +1,7 @@
+
+gmx mdmat -s md.tpr -n md.ndx -f md-1us.xtc -mean mean.xpm -frames frame.xpm -b 1 -e 20000 -xvg xmgrace -nlevels 100
+#gmx mdmat -s md.tpr -n md.ndx -f md-1us.xtc -no -b 1 -e 20000 -xvg xmgrace -nlevels 100
+
+
+
+run                                                        

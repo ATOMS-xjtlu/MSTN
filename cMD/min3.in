@@ -1,0 +1,17 @@
+min3: minimize(0)
+&cntrl
+  imin=1,
+  ntmin = 1,
+  maxcyc=10000,
+  ncyc=1000,
+  drms = 0.0001
+  cut=10.0,
+  ntb=1,
+  ntpr=500,
+  ntwx = 1000,
+  ntr=0,
+  ntr=1,
+  restraintmask='(!(:WAT|:MG|:CAL|:Na+|:Cl-) & !@H=) | (@KA,MG) | (:568@O)',        !backbone atoms in residues 1-293 restrained
+  restraint_wt=10.0
+/
+

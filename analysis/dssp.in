@@ -1,0 +1,14 @@
+parm md-initial.pdb
+trajin md-nW1us.xtc
+
+autoimage
+center :1-217 mass
+strip :WAT|(:Na+|:Cl-)
+ 
+
+image origin center familiar
+reference complex-amber.crd
+secstruct :50-65 out dssp50-65.gnu    
+secstruct :159-174 out dssp159-174.gnu
+
+run                                                        

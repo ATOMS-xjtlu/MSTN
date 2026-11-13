@@ -1,0 +1,24 @@
+
+== Pre-active-MSTN ==
+   OPC sampling: 0-1000 ns, 10000 frames
+   angle1_deg  TIP3P   99.61 ±  6.45  (reps 93.68, 106.48, 98.68)   OPC  100.76 ± 23.15   z = 0.18
+               W1: intra-TIP3P 4.997-12.805;  OPC-TIP3P 8.977-16.179;  KS p(min) 0
+   d1_A        TIP3P   12.14 ±  3.69  (reps 12.64, 8.22, 15.55)   OPC   18.86 ±  7.26   z = 1.82
+               W1: intra-TIP3P 2.906-7.326;  OPC-TIP3P 4.555-10.641;  KS p(min) 0
+   d2_A        TIP3P   16.45 ±  5.34  (reps 14.96, 12.01, 22.37)   OPC   11.48 ±  4.00   z = 0.93
+               W1: intra-TIP3P 2.950-10.366;  OPC-TIP3P 2.533-10.896;  KS p(min) 0
+   OPC angle1_deg  100-ns blocks: 97.1, 104.9, 72.8, 112.3, 106.2, 105.7, 97.0, 88.6, 111.4, 111.5
+   OPC d1_A        100-ns blocks: 27.1, 26.9, 18.3, 22.0, 27.4, 19.8, 12.1, 11.7, 11.4, 11.8
+   OPC d2_A        100-ns blocks: 19.1, 12.9, 9.9, 16.3, 14.0, 8.8, 8.4, 8.7, 8.5, 8.3
+
+== Traj-MSTN-ActRII ==
+   OPC sampling: 0-1000 ns, 10000 frames
+   angle1_deg  TIP3P  120.85 ± 10.07  (reps 113.19, 117.11, 132.26)   OPC  117.41 ± 21.51   z = 0.34
+               W1: intra-TIP3P 3.918-19.074;  OPC-TIP3P 9.913-14.851;  KS p(min) 0
+   d1_A        TIP3P    8.41 ±  0.14  (reps 8.50, 8.48, 8.25)   OPC    8.81 ±  6.24   z = 2.87
+               W1: intra-TIP3P 0.181-0.393;  OPC-TIP3P 0.550-0.688;  KS p(min) 2.4e-84
+   d2_A        TIP3P   14.27 ±  2.22  (reps 11.92, 14.55, 16.34)   OPC    8.22 ±  1.42   z = 2.72
+               W1: intra-TIP3P 1.783-4.420;  OPC-TIP3P 3.693-8.113;  KS p(min) 0
+   OPC angle1_deg  100-ns blocks: 120.1, 124.8, 126.4, 125.9, 109.5, 123.0, 129.3, 132.6, 97.8, 84.6
+   OPC d1_A        100-ns blocks: 8.4, 8.5, 8.4, 8.4, 12.3, 8.8, 8.2, 8.3, 8.5, 8.4
+   OPC d2_A        100-ns blocks: 11.1, 9.2, 7.4, 7.7, 7.7, 8.0, 7.7, 7.8, 7.8, 7.8

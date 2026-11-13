@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <input.xvg> <output_file>"
+    echo "Example: $0 data.xvg processed_data.txt"
+    exit 1
+fi
+
+input_file=$1
+output_file=$2
+
+if [ ! -f "$input_file" ]; then
+    echo "Error: input file '$input_file' not found"
+    exit 1
+fi
+
+if [[ "$input_file" != *.xvg ]]; then
+    echo "Warning: input file may not be in .xvg format"
+fi
+
+awk '
+    BEGIN { line_number = 1 }
+    /^[^#@]/ { 
+        printf "%d\t%s\n", line_number, $2
+        line_number++
+    }
+' "$input_file" > "$output_file"
+
+echo "Done: $input_file -> $output_file"
+echo "First column replaced by row index; second column unchanged"
+

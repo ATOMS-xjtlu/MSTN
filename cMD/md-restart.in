@@ -1,0 +1,18 @@
+product: NPT 500ns
+&cntrl
+ imin=0,                                 ! imin=0(default):run MD simulation
+ ntx=5,
+ irest=1,
+ nstlim=500000000, dt=0.002,
+ ntc=2, ntf=2,
+ ntpr=50000, ntwx=50000,ntwr=50000,
+ cut=10.0,
+ ntb=2,
+ ntp=1, taup=1.0
+ ntt=3, gamma_ln=1.0,
+ tempi = 310.0, temp0=310.0,
+ iwrap=1,
+ ioutfm=1,
+ ntwprt=0
+/
+
